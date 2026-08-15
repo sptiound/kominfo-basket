@@ -104,6 +104,7 @@ elif menu == "📝 Notulensi Rapat":
     
     st.link_button("📄 Buka Google Docs Master Notulensi", "https://docs.google.com/...")
     
+    # Memperbaiki Expander pertama (Password)
     with st.expander("PASSWORD"):
         st.markdown("""
         1. Email
@@ -120,7 +121,8 @@ elif menu == "📝 Notulensi Rapat":
            - kominfoukmbasket@gmail.com : KominfoUKM27
         """)
         
-        st.expander("Rapat Divisi - 12 Agustus 2026"):
+    # Memperbaiki Expander kedua (Rapat), tambahkan 'with' dan perbaiki indentasi
+    with st.expander("Rapat Divisi - 12 Agustus 2026"):
         st.markdown("""
             1. Proker rutin post sg ultah pj amin
                 - buat gform (amin)
