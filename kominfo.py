@@ -6,108 +6,118 @@ st.set_page_config(page_title="Portal Divisi Kominfo", page_icon="🏀", layout=
 
 # ==========================================
 # INJEKSI CSS UNTUK TEMA WARNA CUSTOM & LAYOUT
-# Termasuk penyesuaian otomatis untuk Dark Mode
+# Menggunakan CSS Variables & Media Queries untuk Mode Light/Dark
 # ==========================================
 st.markdown("""
 <style>
     /* ========================================================= */
-    /* 1. MENGURANGI JARAK KOSONG DI ATAS KONTEN UTAMA */
+    /* MENGURANGI JARAK KOSONG DI ATAS AGAR KONTEN NAIK */
     .block-container {
-        padding-top: 1rem !important; 
-    }
-    
-    /* 2. TARIK MENU SIDEBAR KE ATAS */
-    [data-testid="stSidebarHeader"] {
-        padding: 0 !important;
-        height: 0 !important;
-        min-height: 0 !important;
-        display: none !important;
-    }
-    
-    [data-testid="stSidebarUserContent"] {
-        padding-top: 0rem !important;
-        margin-top: -2rem !important; 
+        padding-top: 2rem !important; 
     }
     /* ========================================================= */
 
-    /* 3. TEMA DASAR (LIGHT MODE) */
-    
-    /* Sidebar background: Midnight (#0D47A1) */
-    [data-testid="stSidebar"] {
-        background-color: #0D47A1 !important;
-    }
-    
-    /* Mengubah semua teks di sidebar menjadi putih */
-    [data-testid="stSidebar"] * {
-        color: #FFFFFF !important;
+    /* -----------------------------------------
+       VARIABEL WARNA: DEFAULT / LIGHT MODE
+       ----------------------------------------- */
+    :root {
+        --sidebar-bg: #E3F2FD;
+        --sidebar-text: #0D47A1;
+        --title-color: #1976D2;
+        --text-color: #0a3578;
+        --btn-bg: #fec428;
+        --btn-text: #0D47A1;
+        --btn-border: #fbde37;
+        --btn-hover-bg: #2196F3;
+        --btn-hover-text: #FFFFFF;
+        --alert-bg: #B3E5FC;
+        --alert-text: #0D47A1;
+        --expander-bg: #E1F5FE;
+        --expander-border: #4FC3F7;
+        --expander-text: #0D47A1;
     }
 
-    /* Warna Judul & Subjudul: Cobalt (#1976D2) */
+    /* -----------------------------------------
+       VARIABEL WARNA: DARK MODE
+       ----------------------------------------- */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --sidebar-bg: #0D47A1;        /* Midnight Blue */
+            --sidebar-text: #FFFFFF;
+            --title-color: #64B5F6;       /* Azure/Light Blue agar kontras */
+            --text-color: #E3F2FD;        /* Soft White/Blue */
+            --btn-bg: #fec428;            /* Kuning Spark tetap dipertahankan */
+            --btn-text: #0D47A1;
+            --btn-border: #fbde37;
+            --btn-hover-bg: #1976D2;      /* Cobalt */
+            --btn-hover-text: #FFFFFF;
+            --alert-bg: #01579B;          /* Dark Ocean */
+            --alert-text: #E1F5FE;
+            --expander-bg: #003C8F;
+            --expander-border: #1976D2;
+            --expander-text: #FFFFFF;
+        }
+    }
+
+    /* -----------------------------------------
+       PENERAPAN VARIABEL KE ELEMEN STREAMLIT
+       ----------------------------------------- */
+
+    /* 1. Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: var(--sidebar-bg) !important;
+        transition: 0.3s;
+    }
+    [data-testid="stSidebar"] * {
+        color: var(--sidebar-text) !important;
+    }
+
+    /* 2. Warna Judul & Subjudul */
     h1, h2, h3 {
-        color: #1976D2 !important;
+        color: var(--title-color) !important;
+        transition: 0.3s;
     }
 
     /* Teks biasa */
-    p {
-        color: #0a3578;
+    p, li {
+        color: var(--text-color);
+        transition: 0.3s;
     }
 
-    /* Tombol Link: Kuning Spark */
+    /* 3. Tombol Link */
     [data-testid="baseButton-link"] {
-        background-color: #fec428 !important;
-        color: #0D47A1 !important;
-        border: 2px solid #fbde37 !important;
+        background-color: var(--btn-bg) !important;
+        color: var(--btn-text) !important;
+        border: 2px solid var(--btn-border) !important;
         border-radius: 8px !important;
         font-weight: 800 !important;
         transition: 0.3s;
     }
     
-    /* Efek hover pada tombol */
     [data-testid="baseButton-link"]:hover {
-        background-color: #2196F3 !important;
-        color: #FFFFFF !important;
-        border: 2px solid #2196F3 !important;
+        background-color: var(--btn-hover-bg) !important;
+        color: var(--btn-hover-text) !important;
+        border: 2px solid var(--btn-hover-bg) !important;
     }
 
-    /* Kotak Notifikasi */
+    /* 4. Kotak Notifikasi / Alert */
     [data-testid="stAlert"] {
-        background-color: #4FC3F7 !important;
-        color: #0D47A1 !important;
+        background-color: var(--alert-bg) !important;
+        color: var(--alert-text) !important;
         border: none !important;
+        transition: 0.3s;
     }
     
-    /* Expander background */
+    /* 5. Expander background (Notulensi) */
     [data-testid="stExpander"] {
-        background-color: #E1F5FE !important; 
-        border: 1px solid #4FC3F7 !important;
+        background-color: var(--expander-bg) !important;
+        border: 1px solid var(--expander-border) !important;
         border-radius: 8px;
+        transition: 0.3s;
     }
     
     [data-testid="stExpander"] * {
-        color: #0D47A1 !important;
-    }
-
-    /* ========================================================= */
-    /* 4. PENYESUAIAN OTOMATIS UNTUK DARK MODE */
-    /* ========================================================= */
-    @media (prefers-color-scheme: dark) {
-        /* Ubah warna judul menjadi Azure agar terang dan kontras */
-        h1, h2, h3 {
-            color: #4FC3F7 !important; 
-        }
-        /* Ubah teks biasa menjadi putih terang (Frost) */
-        p {
-            color: #E1F5FE !important;
-        }
-        /* Ubah background Expander agar tidak menyilaukan */
-        [data-testid="stExpander"] {
-            background-color: #1976D2 !important; /* Cobalt */
-            border: 1px solid #4FC3F7 !important; /* Azure */
-        }
-        /* Teks di dalam expander jadi putih */
-        [data-testid="stExpander"] * {
-            color: #E1F5FE !important;
-        }
+        color: var(--expander-text) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -148,7 +158,6 @@ elif menu == "📝 Notulensi Rapat":
     st.title("📝 Notulensi Rapat Divisi")
     st.write("Arsip hasil rapat rutin divisi Kominfo.")
     
-    # Bisa pakai link Google Docs atau merangkum langsung di sini
     st.link_button("📄 Buka Google Docs Master Notulensi", "https://docs.google.com/...")
     
     with st.expander("Rapat Divisi - 12 Agustus 2026"):
@@ -177,12 +186,10 @@ elif menu == "📅 Jobdesc & Hari Besar":
     st.title("📅 Jobdesc & Kalender Hari Besar")
     st.write("Pembagian tugas dan jadwal posting perayaan hari besar.")
     
-    # Tombol langsung ke Spreadsheet
     st.link_button("📊 Buka Google Spreadsheet Jobdesc", "https://docs.google.com/spreadsheets/d/1GnljLZ0-A0Rba876XCtAcmU0nRoReO4AdxrB_rGVrWw/edit?usp=sharing")
     
     st.divider()
     
-    # Menampilkan data hari besar sesuai spreadsheet
     st.subheader("Preview Jadwal Terdekat")
     
     data_hari_besar = pd.DataFrame({
@@ -194,7 +201,7 @@ elif menu == "📅 Jobdesc & Hari Besar":
         ],
         "Hari Peringatan": [
             "Hari Pramuka", "Hari Kemerdekaan, Proklamasi", "Hari Maritim Nasional", 
-            "Maulid Nabi Muhammad SAW.", "G30/SPKI", "Hari Kesaktian Pancasila", 
+            "Maulid Nabi Muhammad SAW.", "G30S/PKI", "Hari Kesaktian Pancasila", 
             "Hari Sumpah Pemuda", "Hari Pahlawan Nasional", "Hari Ayah Nasional", 
             "Hari Guru Nasional", "Hari Ibu", "Hari Natal", 
             "Malam Tahun Baru", "Tahun Baru"
@@ -234,5 +241,5 @@ elif menu == "🎨 Aset Canva":
         st.link_button("🖼️ Template Open Recruitment", "https://canva.link/dd9scm76apd1ied")
     with col2:
         st.warning("Template Instagram Story")
-        st.link_button("📱 Template Story Info Latihan", "hhttps://canva.link/odclsjmj0na5tam")
+        st.link_button("📱 Template Story Info Latihan", "https://canva.link/odclsjmj0na5tam")
         st.link_button("📱 Template Hari Besar", "https://canva.link/drmoy6yiw5msxlp")
