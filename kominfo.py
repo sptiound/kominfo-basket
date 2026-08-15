@@ -6,8 +6,6 @@ st.set_page_config(page_title="Portal Divisi Kominfo", page_icon="🏀", layout=
 
 # ==========================================
 # INJEKSI CSS
-# Sidebar & Elemen khusus menggunakan warna custom awal,
-# Teks utama dan background otomatis mengikuti Light/Dark mode Streamlit
 # ==========================================
 st.markdown("""
 <style>
@@ -23,7 +21,6 @@ st.markdown("""
         background-color: #0D47A1 !important;
     }
     
-    /* Mengubah semua teks di sidebar menjadi putih agar terbaca */
     [data-testid="stSidebar"] * {
         color: #FFFFFF !important;
     }
@@ -41,7 +38,7 @@ st.markdown("""
     }
     
     [data-testid="baseButton-link"]:hover {
-        background-color: #2196F3 !important; /* Ocean */
+        background-color: #2196F3 !important; 
         color: #FFFFFF !important;
         border: 2px solid #2196F3 !important;
     }
@@ -58,10 +55,16 @@ st.markdown("""
     }
 
     /* ========================================================= */
-    /* 4. MERAPIKAN SUDUT EXPANDER (NOTULENSI) */
+    /* 4. EXPANDER / NOTULENSI (DIKEMBALIKAN KE BIRU MUDA) */
     /* ========================================================= */
     [data-testid="stExpander"] {
+        background-color: #E1F5FE !important; /* Biru Muda */
+        border: 1px solid #4FC3F7 !important;
         border-radius: 8px;
+    }
+    
+    [data-testid="stExpander"] * {
+        color: #0D47A1 !important; /* Teks biru tua agar kontras */
     }
 </style>
 """, unsafe_allow_html=True)
@@ -104,7 +107,6 @@ elif menu == "📝 Notulensi Rapat":
     
     st.link_button("📄 Buka Google Docs Master Notulensi", "https://docs.google.com/...")
     
-    # Memperbaiki Expander pertama (Password)
     with st.expander("PASSWORD"):
         st.markdown("""
         1. Email
@@ -114,14 +116,13 @@ elif menu == "📝 Notulensi Rapat":
 
         2. Sosial Media
            ~ username: ukmbasketnusantara
-             - IG: $UKMB4SK3T2627$
+             - IG: \$UKMB4SK3T2627\$
              - TIKTOK: #KominfoUKM27
 
         3. Canva login 
            - kominfoukmbasket@gmail.com : KominfoUKM27
         """)
         
-    # Memperbaiki Expander kedua (Rapat), tambahkan 'with' dan perbaiki indentasi
     with st.expander("Rapat Divisi - 12 Agustus 2026"):
         st.markdown("""
             1. Proker rutin post sg ultah pj amin
