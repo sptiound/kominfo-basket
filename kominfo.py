@@ -109,18 +109,16 @@ elif menu == "📝 Notulensi Rapat":
     
     with st.expander("PASSWORD"):
         st.markdown("""
-        1. Email
-           - basketnusantaraa@gmail.com Pw: Nusantarabasket2026
-           - kominfoukmbasket@gmail.com Pw: Kominfobasket27
-           - nusantarabasketball25.26@gmail.com Pw: Basketnusantara27
-
-        2. Sosial Media
-           ~ username: ukmbasketnusantara
-             - IG: \$UKMB4SK3T2627\$
-             - TIKTOK: #KominfoUKM27
-
-        3. Canva login 
-           - kominfoukmbasket@gmail.com : KominfoUKM27
+            1. Email
+               - basketnusantaraa@gmail.com Pw: Nusantarabasket2026
+               - kominfoukmbasket@gmail.com Pw: Kominfobasket27
+               - nusantarabasketball25.26@gmail.com Pw: Basketnusantara27
+            2. Sosial Media
+               ~ username: ukmbasketnusantara
+                 - IG: \$UKMB4SK3T2627\$
+                 - TIKTOK: #KominfoUKM27
+            3. Canva login 
+               - kominfoukmbasket@gmail.com : KominfoUKM27
         """)
         
     with st.expander("Rapat Divisi - 12 Agustus 2026"):
