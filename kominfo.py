@@ -6,38 +6,53 @@ st.set_page_config(page_title="Portal Divisi Kominfo", page_icon="🏀", layout=
 
 # ==========================================
 # INJEKSI CSS UNTUK TEMA WARNA CUSTOM & LAYOUT
-# Menggunakan palet: Midnight, Cobalt, Ocean, Azure & Kuning
+# Termasuk penyesuaian otomatis untuk Dark Mode
 # ==========================================
 st.markdown("""
 <style>
     /* ========================================================= */
-    /* MENGURANGI JARAK KOSONG DI ATAS AGAR KONTEN NAIK (TIDAK TERLALU TENGAH) */
+    /* 1. MENGURANGI JARAK KOSONG DI ATAS KONTEN UTAMA */
     .block-container {
-        padding-top: 2rem !important; 
+        padding-top: 1rem !important; 
+    }
+    
+    /* 2. TARIK MENU SIDEBAR KE ATAS */
+    [data-testid="stSidebarHeader"] {
+        padding: 0 !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        display: none !important;
+    }
+    
+    [data-testid="stSidebarUserContent"] {
+        padding-top: 0rem !important;
+        margin-top: -2rem !important; 
     }
     /* ========================================================= */
 
-    /* 1. Sidebar background: Midnight (#0D47A1) */
+    /* 3. TEMA DASAR (LIGHT MODE) */
+    
+    /* Sidebar background: Midnight (#0D47A1) */
     [data-testid="stSidebar"] {
         background-color: #0D47A1 !important;
     }
     
-    /* Mengubah semua teks di sidebar menjadi putih agar terbaca */
+    /* Mengubah semua teks di sidebar menjadi putih */
     [data-testid="stSidebar"] * {
         color: #FFFFFF !important;
     }
 
-    /* 2. Warna Judul & Subjudul: Cobalt (#1976D2) */
+    /* Warna Judul & Subjudul: Cobalt (#1976D2) */
     h1, h2, h3 {
         color: #1976D2 !important;
     }
 
-    /* Teks biasa agak gelap agar tetap terbaca tapi bernuansa biru */
+    /* Teks biasa */
     p {
         color: #0a3578;
     }
 
-    /* 3. Tombol Link: Kuning Spark (#fec428) menyesuaikan warna dominan biru */
+    /* Tombol Link: Kuning Spark */
     [data-testid="baseButton-link"] {
         background-color: #fec428 !important;
         color: #0D47A1 !important;
@@ -47,30 +62,52 @@ st.markdown("""
         transition: 0.3s;
     }
     
-    /* Efek hover pada tombol (Tukar warna Ocean & Kuning) */
+    /* Efek hover pada tombol */
     [data-testid="baseButton-link"]:hover {
-        background-color: #2196F3 !important; /* Ocean */
+        background-color: #2196F3 !important;
         color: #FFFFFF !important;
         border: 2px solid #2196F3 !important;
     }
 
-    /* 4. Kotak Notifikasi / Alert (st.info, st.success, dll): Azure (#4FC3F7) */
+    /* Kotak Notifikasi */
     [data-testid="stAlert"] {
         background-color: #4FC3F7 !important;
         color: #0D47A1 !important;
         border: none !important;
     }
     
-    /* Expander background agar nyambung dengan tema */
+    /* Expander background */
     [data-testid="stExpander"] {
-        background-color: #E1F5FE !important; /* Frost - Biru Paling Muda */
+        background-color: #E1F5FE !important; 
         border: 1px solid #4FC3F7 !important;
         border-radius: 8px;
     }
     
-    /* Warna teks di dalam expander (Notulensi) */
     [data-testid="stExpander"] * {
         color: #0D47A1 !important;
+    }
+
+    /* ========================================================= */
+    /* 4. PENYESUAIAN OTOMATIS UNTUK DARK MODE */
+    /* ========================================================= */
+    @media (prefers-color-scheme: dark) {
+        /* Ubah warna judul menjadi Azure agar terang dan kontras */
+        h1, h2, h3 {
+            color: #4FC3F7 !important; 
+        }
+        /* Ubah teks biasa menjadi putih terang (Frost) */
+        p {
+            color: #E1F5FE !important;
+        }
+        /* Ubah background Expander agar tidak menyilaukan */
+        [data-testid="stExpander"] {
+            background-color: #1976D2 !important; /* Cobalt */
+            border: 1px solid #4FC3F7 !important; /* Azure */
+        }
+        /* Teks di dalam expander jadi putih */
+        [data-testid="stExpander"] * {
+            color: #E1F5FE !important;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
