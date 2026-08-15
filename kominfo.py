@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Konfigurasi Halaman
-st.set_page_config(page_title="Portal Internal Kominfo", page_icon="🏀", layout="wide")
+st.set_page_config(page_title="Portal Divisi Kominfo", page_icon="🏀", layout="wide")
 
 # ==========================================
 # INJEKSI CSS UNTUK TEMA WARNA CUSTOM & LAYOUT
