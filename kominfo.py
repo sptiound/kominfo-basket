@@ -5,119 +5,63 @@ import pandas as pd
 st.set_page_config(page_title="Portal Divisi Kominfo", page_icon="🏀", layout="wide")
 
 # ==========================================
-# INJEKSI CSS UNTUK TEMA WARNA CUSTOM & LAYOUT
-# Menggunakan CSS Variables & Media Queries untuk Mode Light/Dark
+# INJEKSI CSS
+# Sidebar & Elemen khusus menggunakan warna custom awal,
+# Teks utama dan background otomatis mengikuti Light/Dark mode Streamlit
 # ==========================================
 st.markdown("""
 <style>
-    /* ========================================================= */
-    /* MENGURANGI JARAK KOSONG DI ATAS AGAR KONTEN NAIK */
+    /* Mengurangi jarak kosong di atas agar konten naik */
     .block-container {
         padding-top: 2rem !important; 
     }
+
     /* ========================================================= */
-
-    /* -----------------------------------------
-       VARIABEL WARNA: DEFAULT / LIGHT MODE
-       ----------------------------------------- */
-    :root {
-        --sidebar-bg: #E3F2FD;
-        --sidebar-text: #0D47A1;
-        --title-color: #1976D2;
-        --text-color: #0a3578;
-        --btn-bg: #fec428;
-        --btn-text: #0D47A1;
-        --btn-border: #fbde37;
-        --btn-hover-bg: #2196F3;
-        --btn-hover-text: #FFFFFF;
-        --alert-bg: #B3E5FC;
-        --alert-text: #0D47A1;
-        --expander-bg: #E1F5FE;
-        --expander-border: #4FC3F7;
-        --expander-text: #0D47A1;
-    }
-
-    /* -----------------------------------------
-       VARIABEL WARNA: DARK MODE
-       ----------------------------------------- */
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --sidebar-bg: #0D47A1;        /* Midnight Blue */
-            --sidebar-text: #FFFFFF;
-            --title-color: #64B5F6;       /* Azure/Light Blue agar kontras */
-            --text-color: #E3F2FD;        /* Soft White/Blue */
-            --btn-bg: #fec428;            /* Kuning Spark tetap dipertahankan */
-            --btn-text: #0D47A1;
-            --btn-border: #fbde37;
-            --btn-hover-bg: #1976D2;      /* Cobalt */
-            --btn-hover-text: #FFFFFF;
-            --alert-bg: #01579B;          /* Dark Ocean */
-            --alert-text: #E1F5FE;
-            --expander-bg: #003C8F;
-            --expander-border: #1976D2;
-            --expander-text: #FFFFFF;
-        }
-    }
-
-    /* -----------------------------------------
-       PENERAPAN VARIABEL KE ELEMEN STREAMLIT
-       ----------------------------------------- */
-
-    /* 1. Sidebar */
+    /* 1. SIDEBAR KEMBALI KE DESAIN AWAL (MIDNIGHT BLUE) */
+    /* ========================================================= */
     [data-testid="stSidebar"] {
-        background-color: var(--sidebar-bg) !important;
-        transition: 0.3s;
+        background-color: #0D47A1 !important;
     }
+    
+    /* Mengubah semua teks di sidebar menjadi putih agar terbaca */
     [data-testid="stSidebar"] * {
-        color: var(--sidebar-text) !important;
+        color: #FFFFFF !important;
     }
 
-    /* 2. Warna Judul & Subjudul */
-    h1, h2, h3 {
-        color: var(--title-color) !important;
-        transition: 0.3s;
-    }
-
-    /* Teks biasa */
-    p, li {
-        color: var(--text-color);
-        transition: 0.3s;
-    }
-
-    /* 3. Tombol Link */
+    /* ========================================================= */
+    /* 2. TOMBOL LINK (KUNING SPARK) */
+    /* ========================================================= */
     [data-testid="baseButton-link"] {
-        background-color: var(--btn-bg) !important;
-        color: var(--btn-text) !important;
-        border: 2px solid var(--btn-border) !important;
+        background-color: #fec428 !important;
+        color: #0D47A1 !important;
+        border: 2px solid #fbde37 !important;
         border-radius: 8px !important;
         font-weight: 800 !important;
         transition: 0.3s;
     }
     
     [data-testid="baseButton-link"]:hover {
-        background-color: var(--btn-hover-bg) !important;
-        color: var(--btn-hover-text) !important;
-        border: 2px solid var(--btn-hover-bg) !important;
+        background-color: #2196F3 !important; /* Ocean */
+        color: #FFFFFF !important;
+        border: 2px solid #2196F3 !important;
     }
 
-    /* 4. Kotak Notifikasi / Alert */
+    /* ========================================================= */
+    /* 3. KOTAK NOTIFIKASI / ALERT (AZURE) */
+    /* ========================================================= */
     [data-testid="stAlert"] {
-        background-color: var(--alert-bg) !important;
-        color: var(--alert-text) !important;
+        background-color: #4FC3F7 !important;
         border: none !important;
-        transition: 0.3s;
     }
-    
-    /* 5. Expander background (Notulensi) */
+    [data-testid="stAlert"] * {
+        color: #0D47A1 !important;
+    }
+
+    /* ========================================================= */
+    /* 4. MERAPIKAN SUDUT EXPANDER (NOTULENSI) */
+    /* ========================================================= */
     [data-testid="stExpander"] {
-        background-color: var(--expander-bg) !important;
-        border: 1px solid var(--expander-border) !important;
         border-radius: 8px;
-        transition: 0.3s;
-    }
-    
-    [data-testid="stExpander"] * {
-        color: var(--expander-text) !important;
     }
 </style>
 """, unsafe_allow_html=True)
