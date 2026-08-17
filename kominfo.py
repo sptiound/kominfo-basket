@@ -83,7 +83,7 @@ menu = st.sidebar.radio("Pilih Kategori:",
 if menu == "Dashboard":
     st.title("Portal Divisi Kominfo 🏀")
     st.write("Selamat datang di pusat data internal Kominfo! Gunakan menu di sebelah kiri untuk mengakses dokumen, link desain, dan jadwal kegiatan.")
-    st.info("Papan Pengumuman: membuat video demo dan konten open recruitment")
+    st.info("Papan Pengumuman: Membuat video demo dan konten open recruitment")
 
 # 2. HALAMAN DOKUMENTASI KEGIATAN (GOOGLE DRIVE)
 elif menu == "📂 Dokumentasi Kegiatan":
@@ -168,7 +168,7 @@ elif menu == "📅 Jobdesc & Hari Besar":
             "Malam Tahun Baru", "Tahun Baru"
         ],
         "Status Desain": [
-            "Completed ✅", "Not started ⏳", "Not started ⏳", "Not started ⏳",
+            "Completed ✅", "Completed ✅", "Not started ⏳", "Not started ⏳",
             "Not started ⏳", "Not started ⏳", "Not started ⏳", "Not started ⏳",
             "Not started ⏳", "Not started ⏳", "Not started ⏳", "Not started ⏳",
             "Not started ⏳", "Not started ⏳"
@@ -180,7 +180,7 @@ elif menu == "📅 Jobdesc & Hari Besar":
             "Vella", "Mei"
         ],
         "Status Upload": [
-            "Done ✅", "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌",
+            "Done ✅", "Completed ✅", "Not Upload Yet ❌", "Not Upload Yet ❌",
             "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌",
             "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌",
             "Not Upload Yet ❌", "Not Upload Yet ❌"
