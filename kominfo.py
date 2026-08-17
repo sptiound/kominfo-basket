@@ -180,7 +180,7 @@ elif menu == "📅 Jobdesc & Hari Besar":
             "Vella", "Mei"
         ],
         "Status Upload": [
-            "Done ✅", "Completed ✅", "Not Upload Yet ❌", "Not Upload Yet ❌",
+            "Done ✅", "Done ✅", "Not Upload Yet ❌", "Not Upload Yet ❌",
             "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌",
             "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌", "Not Upload Yet ❌",
             "Not Upload Yet ❌", "Not Upload Yet ❌"
